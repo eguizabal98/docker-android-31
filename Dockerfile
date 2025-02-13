@@ -81,4 +81,4 @@ RUN mkdir /opt/android-ndk-tmp && \
 RUN chmod +x /opt/tools/entrypoint.sh
 
 # Execute the entrypoint script
-CMD ["/opt/tools/entrypoint.sh", "built-in"]
+CMD ["sh", "/opt/tools/entrypoint.sh", "built-in"]

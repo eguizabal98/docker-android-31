@@ -58,6 +58,7 @@ COPY licenses /opt/licenses
 
 # Set execution permissions for entrypoint script *AFTER* copying
 RUN chmod +x /opt/tools/entrypoint.sh
+RUN chmod +x /opt/tools/android-sdk-update.sh
 
 WORKDIR /opt/android-sdk-linux
 

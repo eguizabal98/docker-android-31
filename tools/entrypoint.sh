@@ -16,6 +16,4 @@ chown android:android /opt/android-sdk-linux
 # Check if su-exec is available and use it for executing the script as android user
 if checkbin; then
     exec su-exec android:android /opt/tools/android-sdk-update.sh "$@"
-else
-    su_mt_user /opt/tools/android-sdk-update.sh "$@"
 fi

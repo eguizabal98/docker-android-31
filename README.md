@@ -10,13 +10,13 @@ Docker for Android SDK 31 with preinstalled build tools, emulator image and pre-
 # sdkmanager --list
   Path                                        | Version | Description                                | Location
   -------                                     | ------- | -------                                    | -------
-  build-tools;30.0.3                          | 30.0.3  | Android SDK Build-Tools 30.0.3             | build-tools/30.0.3/
+  build-tools;34.0.0                          | 34.0.0  | Android SDK Build-Tools 34.0.0             | build-tools/34.0.0/
   cmdline-tools;latest                        | 2.1     | Android SDK Command-line Tools (latest)    | cmdline-tools/latest/
   emulator                                    | 30.1.5  | Android Emulator                           | emulator/
   patcher;v4                                  | 1       | SDK Patch Applier v4                       | patcher/v4/
-  platform-tools                              | 30.0.4  | Android SDK Platform-Tools                 | platform-tools/
-  platforms;android-31                        | 31      | Android SDK Platform 31                    | platforms/android-31/
-  system-images;android-31;google_apis;x86_64 | 11      | Google APIs Intel x86 Atom_64 System Image | system-images/android-31/google_apis/x86_64/
+  platform-tools                              | 34.0.0  | Android SDK Platform-Tools                 | platform-tools/
+  platforms;android-31                        | 34      | Android SDK Platform 33                    | platforms/android-34/
+  system-images;android-31;google_apis;x86_64 | 17      | Google APIs Intel x86 Atom_64 System Image | system-images/android-34/google_apis/x86_64/
   NDK                                         | r22     | Android NDK r22                            | ndk/
 ```
 
@@ -28,7 +28,7 @@ Docker for Android SDK 31 with preinstalled build tools, emulator image and pre-
   # check installed packages
   $ sdkmanager --list
   # create and run emulator
-  $ avdmanager create avd -n first_avd --abi google_apis/x86_64 -k "system-images;android-31;google_apis;x86_64"
+  $ avdmanager create avd -n first_avd --abi google_apis/x86_64 -k "system-images;android-34;google_apis;x86_64"
   $ emulator -avd first_avd -no-window -no-audio &
   $ adb devices
   # You can also run other Android platform tools, which are all added to the PATH environment variable
@@ -40,8 +40,8 @@ Docker for Android SDK 31 with preinstalled build tools, emulator image and pre-
 - Non-interactive way
   ```bash
   # check installed packages
-  $ docker run -it --rm eguizabal98/android-31-ndk22:latest sdkmanager --list
+  $ docker run -it --rm eguizabal98/android-34-34.0.0-jdk21:latest sdkmanager --list
   # list existing emulators
-  $ docker run -it --rm eguizabal98/android-31-ndk22:latest avdmanager list avd
+  $ docker run -it --rm eguizabal98/android-34-34.0.0-jdk21:latest avdmanager list avd
   # You can also run other Android platform tools, which are all added to the PATH environment variable
   ```

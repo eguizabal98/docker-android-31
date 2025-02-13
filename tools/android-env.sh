@@ -1,50 +1,49 @@
 #!/usr/bin/env bash
 
-export ANDROID_HOME=/opt/android-sdk-linux
-export ANDROID_SDK_ROOT=${ANDROID_HOME}
-export ANDROID_SDK_HOME=${ANDROID_HOME}
-export ANDROID_SDK=${ANDROID_HOME}
+# Set Android SDK environment variables
+export ANDROID_HOME="/opt/android-sdk-linux"
+export ANDROID_SDK_ROOT="${ANDROID_HOME}"
+export ANDROID_SDK_HOME="${ANDROID_HOME}"
+export ANDROID_SDK="${ANDROID_HOME}"
 
-export PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin
-export PATH=${PATH}:${ANDROID_HOME}/cmdline-tools/tools/bin
-export PATH=${PATH}:${ANDROID_HOME}/tools/bin
-export PATH=${PATH}:${ANDROID_HOME}/build-tools/34.0.0
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
-export PATH=${PATH}:${ANDROID_HOME}/emulator
-export PATH=${PATH}:${ANDROID_HOME}/bin
+# Update system PATH to include Android SDK tools
+export PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
+export PATH="${PATH}:${ANDROID_HOME}/build-tools/34.0.0"
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools"
+export PATH="${PATH}:${ANDROID_HOME}/emulator"
 
+# Function to print welcome message
 function print_header() {
-    figlet SBB CFF FFS
-    figlet welcome to
-    figlet andep
-    echo ''
-    echo ''
+    figlet "Android SDK"
+    figlet "Environment"
     echo ''
 }
 
+# Function to display available commands
 function help() {
-    figlet "usage:"
-    echo "update_sdk: Updates the SDK"
-    echo "andep: Installs one or more android Packets."
-    echo "   -Example: anddep \"platforms;android-26\""
+    figlet "Usage:"
+    echo "update_sdk: Updates the Android SDK"
+    echo "andep: Installs one or more Android SDK packages."
+    echo "   Example: andep \"platforms;android-34\""
     echo "help: Shows this help"
     echo ''
-    echo ''
-    echo ''
 }
 
+# Function to update Android SDK and accept licenses
 function update_sdk() {
-    android-accept-licenses.sh "sdkmanager --update"
+    sdkmanager --licenses && sdkmanager --update
 }
 
+# Function to install specific Android SDK packages
 function andep() {
-    if [ -z ${1} ]; then
+    if [ -z "$1" ]; then
         help
         return 1
     fi
-    android-accept-licenses.sh  "sdkmanager ${1}"
+    sdkmanager "$1"
 }
 
+# Export functions to be used in the shell session
 export -f help
 export -f update_sdk
 export -f andep

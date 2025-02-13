@@ -16,7 +16,7 @@ Docker for Android SDK 31 with preinstalled build tools, emulator image and pre-
   patcher;v4                                  | 1       | SDK Patch Applier v4                       | patcher/v4/
   platform-tools                              | 34.0.0  | Android SDK Platform-Tools                 | platform-tools/
   platforms;android-31                        | 34      | Android SDK Platform 33                    | platforms/android-34/
-  system-images;android-31;google_apis;x86_64 | 17      | Google APIs Intel x86 Atom_64 System Image | system-images/android-34/google_apis/x86_64/
+  system-images;android-31;google_apis;x86_64 | Java 21 | Google APIs Intel x86 Atom_64 System Image | system-images/android-34/google_apis/x86_64/
   NDK                                         | r22     | Android NDK r22                            | ndk/
 ```
 

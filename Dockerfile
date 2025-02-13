@@ -13,7 +13,7 @@ ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 
-# Env variables of Android SDK and NDK
+# Env variables
 ENV ANDROID_HOME="/opt/android-sdk-linux"
 ENV ANDROID_NDK_VERSION="r22"
 ENV ANDROID_NDK_HOME="${ANDROID_HOME}/ndk"
@@ -49,12 +49,15 @@ RUN dpkg --add-architecture i386 && \
         vim && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Create group and user por Android SDK
+# Create group and user
 RUN groupadd android && useradd -d /opt/android-sdk-linux -g android android
 
 # Copy tools and licenses
 COPY tools /opt/tools
 COPY licenses /opt/licenses
+
+# Set execution permissions for entrypoint script *AFTER* copying
+RUN chmod +x /opt/tools/entrypoint.sh
 
 WORKDIR /opt/android-sdk-linux
 
@@ -76,9 +79,6 @@ RUN mkdir /opt/android-ndk-tmp && \
     mv ./android-ndk-${ANDROID_NDK_VERSION} ${ANDROID_NDK_HOME} && \
     cd ${ANDROID_NDK_HOME} && \
     rm -rf /opt/android-ndk-tmp
-
-# Set execution permissions for entrypoint script
-RUN chmod +x /opt/tools/entrypoint.sh
 
 # Execute the entrypoint script
 CMD ["sh", "/opt/tools/entrypoint.sh", "built-in"]

@@ -77,4 +77,8 @@ RUN mkdir /opt/android-ndk-tmp && \
     cd ${ANDROID_NDK_HOME} && \
     rm -rf /opt/android-ndk-tmp
 
+# Set execution permissions for entrypoint script
+RUN chmod +x /opt/tools/entrypoint.sh
+
+# Execute the entrypoint script
 CMD ["/opt/tools/entrypoint.sh", "built-in"]
